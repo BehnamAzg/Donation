@@ -2,15 +2,138 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Donation to Behnam</title>
     <link href="/src/style.css" rel="stylesheet" />
     <script defer type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <main class="max-w-sm max-sm:w-full h-screen flex-center flex-col mx-auto gap-4 py-6 max-sm:px-4">
-      <button class="btn">Default</button>
+    <main class="w-full h-screen flex items-center justify-start flex-col gap-4 bg-warning">
+      <nav class="w-full flex-center py-4 px-24 max-sm:px-8 select-none mb-10 max-sm:mb-28 text-black ">
+        <a class="text-sm font-bold font-serif">Behnam Azg</a>
+        <ul class="flex gap-6 max-sm:gap-4 w-fit ml-auto text-xs font-semibold">
+          <li>
+            <button class="hover:tracking-wider hover:font-bold hover:underline transition-[letter-spacing] underline-offset-2 hover:cursor-pointer focus-bg" onclick="projectsModal.showModal()">Projects</button>
+          </li>
+          <li>
+            <button class="hover:tracking-wider hover:font-bold hover:underline transition-[letter-spacing] underline-offset-2 hover:cursor-pointer focus-bg" onclick="aboutModal.showModal()">About</button>
+          </li>
+          <li>
+            <a href="https://github.com/BehnamAzg" target="_blank" class="hover:tracking-wider hover:font-bold hover:underline transition-[letter-spacing] underline-offset-2 hover:cursor-pointer focus-bg">GitHub</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="flex-center flex-col gap-3 bg-base-200 p-8 rounded-4xl my-auto relative overflow-visible select-none">
+        <!-- Image -->
+        <div class="w-full h-fit flex-center absolute inset-x-0 -top-20">
+          <img src="/images/heart.png" class="w-24 h-24 animate-bounce" />
+        </div>
+        <!-- Chat -->
+        <div class="chat chat-start absolute left-70 -top-24 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:-top-48">
+          <div class="chat-bubble bg-base-200 shrink-0 min-w-max w-auto text-sm font-semibold text-black">
+            Thank You 
+            <br />
+            For Your Support!
+          </div>
+        </div>
+        <!-- Crpto QR -->
+        <img src="/images/USDT-TRC-20.jpg" alt="Donation QR Code" class="w-32 mb-1" />
+
+        <!-- Crpto Address -->
+        <fieldset class="fieldset flex max-sm:flex-col max-sm:gap-3">
+          <legend class="fieldset-legend">USDT on Tron (TRC-20):</legend>
+
+          <input id="addressInput" type="text" class="input field-sizing-content text-sm max-sm:text-xs focus-primary" value="TYSGamXbhpTo2Ky8A4wWLoSuQ3RkV8T3wS" readonly />
+
+          <button id="copyBtn" class="btn btn-warning text-xs focus-primary">Copy</button>
+        </fieldset>
+
+        <a
+          href="https://link.trustwallet.com/send?coin=195&address=TYSGamXbhpTo2Ky8A4wWLoSuQ3RkV8T3wS&token_id=TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+          target="_blank"
+          class="btn btn-info rounded-full w-fit px-6 max-sm:w-full shadow-none border-none focus-primary">
+          <svg width="16" height="16" fill="currentColor" class="">
+            <use href="/icons.svg#icon-trust"></use>
+          </svg>
+          <span>Donate via Trust Wallet</span>
+        </a>
+
+        <!-- Buttons -->
+        <!-- <button class="btn btn-warning rounded-full w-52 shadow-none border-none hover:bg-blue-300">Donate in Crypto</button> -->
+        <!-- <button class="btn btn-warning rounded-full w-52 shadow-none border-none hover:bg-blue-300">Donate in Dollars</button> -->
+        <!-- <button class="btn btn-warning rounded-full w-52 shadow-none border-none hover:bg-blue-300">Donate in Tomans</button> -->
+      </div>
+
+      <!-- About -->
+      <dialog id="aboutModal" class="modal">
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+        <div class="modal-box bg-warning text-black">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-100 focus-primary">✕</button>
+          </form>
+          <h3 class="text-md font-bold">About Me</h3>
+          <hr class="border-black/10 my-4" />
+          <div class="pb-2 text-sm font-medium">
+            <p class="">Hi, I'm Behnam 👋</p>
+            <p class="mt-2">I make free open-source apps to make helpful tools accessible to everyone.</p>
+            <p class="mt-2">
+              Check them out in <button class="hover:tracking-wider underline-offset-2 font-bold underline transition-[letter-spacing] hover:cursor-pointer focus-bg" onclick="projectsModal.showModal()">Projects</button> or on my
+              <a href="https://github.com/BehnamAzg" target="_blank" class="hover:tracking-wider underline-offset-2 font-bold underline transition-[letter-spacing] hover:cursor-pointer focus-bg">GitHub</a>.
+            </p>
+            <p class="mt-4">Your support keeps this going - Thank you in advance for donating!</p>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Projects -->
+      <dialog id="projectsModal" class="modal">
+        <form method="dialog" class="modal-backdrop">
+          <button>close</button>
+        </form>
+        <div class="modal-box bg-warning text-black">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3 hover:bg-base-100 focus-primary">✕</button>
+          </form>
+          <h3 class="text-md font-bold">My Projects</h3>
+          <hr class="border-black/10 my-4" />
+          <div class="pb-2 text-sm flex-center flex-col gap-2">
+            <!-- Project 1 -->
+            <a href="https://github.com/BehnamAzg/GhostCrypt" target="_blank" class="w-xs max-sm:w-full h-fit bg-white rounded-2xl flex p-2 gap-3 hover:ring-2 hover:ring-primary hover:scale-95 transition-[scale] focus-primary select-none">
+              <div class="w-14 h-14 bg-warning rounded-xl shrink-0">
+                <img src="https://github.com/BehnamAzg/GhostCrypt/raw/main/public/icons/icon.svg" alt="Icon">
+              </div>
+              <div class="flex flex-col justify-center gap-1 w-full">
+                <h4 class="font-bold">GhostCrypt</h4>
+                <h5 class="text-sm">Message Encryption Tool</h5>
+              </div>
+              <div class="flex-center w-14 rounded-xl text-black">
+                <svg width="16" height="16" fill="currentColor" class="">
+                  <use href="/icons.svg#icon-link"></use>
+                </svg>
+              </div>
+            </a>
+            <!-- Project 2 -->
+            <a href="https://github.com/BehnamAzg/MiniQR" target="_blank" class="w-xs max-sm:w-full h-fit bg-white rounded-2xl flex p-2 gap-3 hover:ring-2 hover:ring-primary hover:scale-95 transition-[scale] focus-primary select-none">
+              <div class="w-14 h-14 bg-warning rounded-xl shrink-0">
+                <img src="https://github.com/BehnamAzg/MiniQR/raw/main/public/icon.svg" alt="Icon">
+              </div>
+              <div class="flex flex-col justify-center gap-1 w-full">
+                <h4 class="font-bold">MiniQR</h4>
+                <h5 class="text-sm">Easy QR Code Generator</h5>
+              </div>
+              <div class="flex-center w-14 rounded-xl text-black">
+                <svg width="16" height="16" fill="currentColor" class="">
+                  <use href="/icons.svg#icon-link"></use>
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </dialog>
     </main>
   </body>
 </html>
